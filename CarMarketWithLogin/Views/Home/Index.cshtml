@@ -1,0 +1,44 @@
+﻿@* @{ *@
+@*     ViewData["Title"] = "Home Page"; *@
+@* } *@
+@* *@
+@* <div class="text-center"> *@
+@*     <h1 class="display-4">Welcome</h1> *@
+@*     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+@* </div> *@
+
+@model IEnumerable<CarMarketWithLogin.Models.Car>
+
+<h1>Все автомобили:</h1>
+
+
+<form>
+    <select name="mark-navigator" onchange="top.location.href = this.options[this.selectedIndex].value;">
+        <option selected value="#">Все марки</option>
+        @foreach (var item in Model.GroupBy(x => x.Brand))
+        {
+            <option value="/ChoseCar/ChosenMark/{@item.Key}">@item.Key</option>
+        }
+    </select>
+</form>
+
+
+<div class="row mt-5 mb-2">
+    @{
+        foreach (var car in Model)
+        {
+            <div class="col-lg-4">
+                <a class="btn-block" href="/CarInfo/InfoAbout/{@car.Model}">
+                    <div class="ramka">
+                        <img src="@car.Imgs.OrderBy(x => x.Url).FirstOrDefault(x => x.CarId == car.Id).Url"
+                             alt="@car.Brand" width="400" height="400"/>
+                    </div>
+                </a>
+                <h2>@car.Brand</h2>
+                <p>@car.Model</p>
+                <p>Рекомендованная цена: @car.RecommendPrice.ToString()$</p>
+                <p><a class="btn-block" href="/CarInfo/InfoAbout/{@car.Model}">Подробнее</a> <a class="btn btn-warning" href="#">В закладки</a></p>
+            </div>
+        }
+    }
+</div>

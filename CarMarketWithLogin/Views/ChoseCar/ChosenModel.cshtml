@@ -1,0 +1,21 @@
+@model CarMarketWithLogin.Models.Car
+
+
+<div class="row mt-5 mb-2">
+    @{
+        <div class="col-lg-4">
+        <p><div class="ramka">
+            
+            <a class="btn-block" href="/CarInfo/InfoAbout/{@Model.Model}">
+
+            <img src="@Model.Imgs.OrderBy(x => x.Url).FirstOrDefault(x => x.CarId == Model.Id).Url"
+                 alt="@Model.Brand"/>
+        
+            </a> </div>
+            <h2>@Model.Brand</h2>
+            <p>@Model.Model</p>
+            <p>Рекомендованная цена: @Model.RecommendPrice.ToString()$</p>
+            <p><a class="btn-block" href="/CarInfo/InfoAbout/{@Model.Model}">Подробнее</a> <a class="btn btn-warning" href="#">В закладки</a></p>
+        </div>
+    }
+</div>

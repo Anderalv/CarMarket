@@ -1,0 +1,36 @@
+@model IEnumerable<CarMarketWithLogin.Models.Car>
+
+<h1>Все автомобили:</h1>
+
+<form>
+ <select name="java-navigator" onchange="top.location.href =
+  this.options[this.selectedIndex].value;">
+  <option selected value="#">Все марки</option>
+  @foreach (var item in Model)
+       {
+           <option value="/Cars/ChosenMark/{@ViewBag.EngineType}/{@item.Brand}">@item.Brand (@ViewBag.EngineType)</option>
+       }
+ </select>
+</form>
+
+<div class="row mt-5 mb-2">
+    @{
+        foreach (var car in Model)
+        {
+            <div class="col-lg-4">
+                <p><div class="ramka">
+                <a class="btn-block" href="/CarInfo/InfoAbout/{@car.Model}">
+                    
+                    <img src="@car.Imgs.OrderBy(x => x.Url).FirstOrDefault(x => x.CarId == car.Id).Url"
+                         alt="@car.Brand" width="400" height="400"/>
+                   
+                </a> </div>
+            
+                    <h2>@car.Brand</h2>
+                    <p>@car.Model</p>
+                    <p>Рекомендованная цена: @car.RecommendPrice.ToString()$</p>
+                    <p><a class="btn-block" href="/CarInfo/InfoAbout/{@car.Model}">Подробнее</a> <a class="btn btn-warning" href="#">В закладки</a></p>
+                </div>
+        }
+    }
+</div>

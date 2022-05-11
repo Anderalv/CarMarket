@@ -1,0 +1,46 @@
+@using System.Globalization
+@model CarMarketWithLogin.Models.Car
+
+<h1>@Model.Brand @Model.Model</h1> 
+<h1>Поколение @Model.Generation</h1>
+<h2>@Model.StartYear - @Model.EndYear</h2>
+<div class="row mt-5 mb-2">
+    @{
+        foreach (var img in Model.Imgs.OrderBy(x => x.Url).ToList())
+        {
+            <div class="col-lg-4">
+                <div class="ramka">
+                    <img src="@img.Url" alt="@Model.Brand"/>
+                </div>
+            </div>    
+        }
+    }
+</div>
+
+<div>
+    <h2>Тип КПП:</h2>
+    @foreach (var item in Model.Transmissions.OrderBy(x => x.Name))
+    {
+        <h4 style="margin-left: 40px">@item.Name</h4> 
+    }
+    <h2>Тип Двигателя:</h2>
+    @foreach (var item in Model.EngineType.OrderBy(x => x.Name))
+    {
+        <h4 style="margin-left: 40px">@item.Name</h4> 
+    }
+    <h2>Объем двигателя:</h2>
+    @foreach (var item in Model.Capacities.OrderBy(x => x.Name))
+    {
+        <h4 style="margin-left: 40px">@item.Name.ToString(CultureInfo.InvariantCulture)</h4> 
+    }
+    <h2>Тип кузова:</h2>
+    @foreach (var item in Model.BodyType.OrderBy(x => x.Name))
+    {
+        <h4 style="margin-left: 40px">@item.Name</h4> 
+    }
+    <h2>Тип привода:</h2>
+    @foreach (var item in Model.DriveUnit.OrderBy(x => x.Name))
+    {
+        <h4 style="margin-left: 40px">@item.Name</h4> 
+    }
+</div>
