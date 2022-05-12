@@ -1,12 +1,3 @@
-﻿@* @{ *@
-@*     ViewData["Title"] = "Home Page"; *@
-@* } *@
-@* *@
-@* <div class="text-center"> *@
-@*     <h1 class="display-4">Welcome</h1> *@
-@*     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
-@* </div> *@
-
 @model IEnumerable<CarMarketWithLogin.Models.Car>
 
 <h1>Все автомобили:</h1>
@@ -24,9 +15,9 @@
 
 <form>
     <select name="mark-navigator" onchange="top.location.href = this.options[this.selectedIndex].value;">
-        <option selected value="#">По умолчанию</option>
-        <option value="/Home/SortPrice">по цене</option>
-        <option value="/Home/SortYear">по году</option>
+        <option selected value="/Cars/SortYear/{@ViewBag.EngineType}">По году</option>
+        <option value="/Cars/SortPrice/{@ViewBag.EngineType}">по цене</option>
+        <option value="/Cars/List/{@ViewBag.EngineType}">по умолчанию</option>
     </select>
 </form>
 

@@ -3,15 +3,24 @@
 <h1>Все автомобили:</h1>
 
 <form>
- <select name="java-navigator" onchange="top.location.href =
+    <select name="java-navigator" onchange="top.location.href =
   this.options[this.selectedIndex].value;">
-  <option selected value="#">Все марки</option>
-  @foreach (var item in Model)
-       {
-           <option value="/Cars/ChosenMark/{@ViewBag.EngineType}/{@item.Brand}">@item.Brand (@ViewBag.EngineType)</option>
-       }
- </select>
+        <option selected value="#">Все марки</option>
+        @foreach (var item in Model)
+        {
+            <option value="/Cars/ChosenMark/{@ViewBag.EngineType}/{@item.Brand}">@item.Brand (@ViewBag.EngineType)</option>
+        }
+    </select>
 </form>
+
+<form>
+    <select name="mark-navigator" onchange="top.location.href = this.options[this.selectedIndex].value;">
+        <option selected value="/Cars/List/{@ViewBag.EngineType}">По умолчанию</option>
+        <option value="/Cars/SortPrice/{@ViewBag.EngineType}">по цене</option>
+        <option value="/Cars/SortYear/{@ViewBag.EngineType}">по году</option>
+    </select>
+</form>
+
 
 <div class="row mt-5 mb-2">
     @{

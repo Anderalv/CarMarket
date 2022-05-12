@@ -29,5 +29,21 @@ namespace CarMarketWithLogin.Controllers
             model = model.Replace("{", "").Replace("}", "");
             return View(_allCars.Cars.FirstOrDefault(x => x.Model.Equals(model, StringComparison.CurrentCultureIgnoreCase)));
         }
+
+        // [Route("/ChoseMarkCar/{mark}/{criterion}")]  
+        // public ViewResult ChosenMarkWithSort(string mark, string criterion)
+        // {
+        //     mark = mark.Replace("{", "").Replace("}", "");
+        //     criterion = criterion.Replace("{", "").Replace("}", "");
+        //
+        //     var cars = criterion.Equals("Price", StringComparison.CurrentCultureIgnoreCase)
+        //         ? _allCars.Cars.Where(x => x.Brand.Equals(mark, StringComparison.CurrentCultureIgnoreCase))
+        //             .OrderBy(x => x.RecommendPrice)
+        //         : _allCars.Cars.Where(x => x.Brand.Equals(mark, StringComparison.CurrentCultureIgnoreCase))
+        //             .OrderBy(x => x.StartYear);
+        //     
+        //     
+        //     return View(cars);
+        // }
     }
 }

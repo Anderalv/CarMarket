@@ -88,3 +88,7 @@
 /Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/Cars/List.cshtml.g.cs
 /Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/ChoseCar/ChosenMark.cshtml.g.cs
 /Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/ChoseCar/ChosenModel.cshtml.g.cs
+/Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/Cars/SortPrice.cshtml.g.cs
+/Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/Cars/SortYear.cshtml.g.cs
+/Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/Home/SortPrice.cshtml.g.cs
+/Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/Home/SortYear.cshtml.g.cs
