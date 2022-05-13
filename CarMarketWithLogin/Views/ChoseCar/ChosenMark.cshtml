@@ -16,9 +16,9 @@
 
 <form>
     <select name="mark-navigator" onchange="top.location.href = this.options[this.selectedIndex].value;">
-        <option selected value="#">По цене</option>
-        <option value="/ChoseMarkCar/{@Model.FirstOrDefault().Model}/Price">по цене</option>
-        <option value="/ChoseMarkCar/{@Model.FirstOrDefault().Model}/Year">по году</option>
+        <option selected value="/ChoseCar/ChosenMark/{@Model.FirstOrDefault().Brand}">По умолчанию</option>
+        <option value="/ChoseCar/ChosenMarkSortYear/{@Model.FirstOrDefault().Brand}/Year">По году</option>
+        <option value="/ChoseMarkCar/ChosenMarkSortPrice/{@Model.FirstOrDefault().Brand}/Price">По цене</option>
     </select>
 </form>
 

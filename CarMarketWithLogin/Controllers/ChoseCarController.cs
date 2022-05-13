@@ -30,20 +30,22 @@ namespace CarMarketWithLogin.Controllers
             return View(_allCars.Cars.FirstOrDefault(x => x.Model.Equals(model, StringComparison.CurrentCultureIgnoreCase)));
         }
 
-        // [Route("/ChoseMarkCar/{mark}/{criterion}")]  
-        // public ViewResult ChosenMarkWithSort(string mark, string criterion)
-        // {
-        //     mark = mark.Replace("{", "").Replace("}", "");
-        //     criterion = criterion.Replace("{", "").Replace("}", "");
-        //
-        //     var cars = criterion.Equals("Price", StringComparison.CurrentCultureIgnoreCase)
-        //         ? _allCars.Cars.Where(x => x.Brand.Equals(mark, StringComparison.CurrentCultureIgnoreCase))
-        //             .OrderBy(x => x.RecommendPrice)
-        //         : _allCars.Cars.Where(x => x.Brand.Equals(mark, StringComparison.CurrentCultureIgnoreCase))
-        //             .OrderBy(x => x.StartYear);
-        //     
-        //     
-        //     return View(cars);
-        // }
+        [Route("/ChoseCar/ChosenMarkSortYear/{mark}/Year")]  
+        public ViewResult ChosenMarkSortYear(string mark)
+        {
+            mark = mark.Replace("{", "").Replace("}", "");
+            
+            return View( _allCars.Cars.Where(x => x.Brand.Equals(mark, StringComparison.CurrentCultureIgnoreCase))
+                                            .OrderBy(x => x.RecommendPrice));
+        } 
+        
+        [Route("/ChoseMarkCar/ChosenMarkSortPrice/{mark}/Price")]  
+        public ViewResult ChosenMarkSortPrice(string mark)
+        {
+            mark = mark.Replace("{", "").Replace("}", "");
+            
+            return View( _allCars.Cars.Where(x => x.Brand.Equals(mark, StringComparison.CurrentCultureIgnoreCase))
+                                            .OrderBy(x => x.StartYear));
+        }
     }
 }

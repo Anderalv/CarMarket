@@ -92,3 +92,5 @@
 /Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/Cars/SortYear.cshtml.g.cs
 /Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/Home/SortPrice.cshtml.g.cs
 /Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/Home/SortYear.cshtml.g.cs
+/Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/ChoseCar/ChosenMarkSortPrice.cshtml.g.cs
+/Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/ChoseCar/ChosenMarkSortYear.cshtml.g.cs
