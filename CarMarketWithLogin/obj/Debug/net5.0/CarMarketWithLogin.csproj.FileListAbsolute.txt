@@ -94,3 +94,10 @@
 /Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/Home/SortYear.cshtml.g.cs
 /Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/ChoseCar/ChosenMarkSortPrice.cshtml.g.cs
 /Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/ChoseCar/ChosenMarkSortYear.cshtml.g.cs
+/Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/bin/Debug/net5.0/PagedList.dll
+/Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/bin/Debug/net5.0/PagedList.Mvc.dll
+/Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/bin/Debug/net5.0/JetBrains.Annotations.dll
+/Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/bin/Debug/net5.0/PagedList.Core.dll
+/Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/bin/Debug/net5.0/PagedList.Core.Mvc.dll
+/Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/bin/Debug/net5.0/X.PagedList.dll
+/Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/bin/Debug/net5.0/X.PagedList.Mvc.Core.dll

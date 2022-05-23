@@ -17,30 +17,42 @@
     }
 </div>
 
-<div class="display-flex">
-    <h2>Тип КПП:</h2>
-    @foreach (var item in Model.Transmissions.OrderBy(x => x.Name))
-    {
-        <h4 style="margin-left: 40px">@item.Name</h4> 
-    }
-    <h2>Тип Двигателя:</h2>
-    @foreach (var item in Model.EngineType.OrderBy(x => x.Name))
-    {
-        <h4 style="margin-left: 40px">@item.Name</h4> 
-    }
-    <h2>Объем двигателя:</h2>
-    @foreach (var item in Model.Capacities.OrderBy(x => x.Name))
-    {
-        <h4 style="margin-left: 40px">@item.Name.ToString(CultureInfo.InvariantCulture)</h4> 
-    }
-    <h2>Тип кузова:</h2>
-    @foreach (var item in Model.BodyType.OrderBy(x => x.Name))
-    {
-        <h4 style="margin-left: 40px">@item.Name</h4> 
-    }
-    <h2>Тип привода:</h2>
-    @foreach (var item in Model.DriveUnit.OrderBy(x => x.Name))
-    {
-        <h4 style="margin-left: 40px">@item.Name</h4> 
-    }
-</div>
+<div class="container">
+    <div class="row align-items-start">
+        <div class="col">
+            <h2>Тип КПП:</h2>
+            @foreach (var item in Model.Transmissions.OrderBy(x => x.Name))
+            {
+                <h4 style="margin-left: 40px">@item.Name</h4>
+            }
+        </div>
+        <div class="col">
+            <h2>Тип Двигателя:</h2>
+            @foreach (var item in Model.EngineType.OrderBy(x => x.Name))
+            {
+                <h4 style="margin-left: 40px">@item.Name</h4>
+            }
+        </div>
+        <div class="col">
+            <h2>Объем двигателя:</h2>
+            @foreach (var item in Model.Capacities.OrderBy(x => x.Name))
+            {
+                <h4 style="margin-left: 40px">@item.Name.ToString(CultureInfo.InvariantCulture)</h4>
+            }
+        </div>
+        <div class="col">
+            <h2>Тип кузова:</h2>
+                @foreach (var item in Model.BodyType.OrderBy(x => x.Name))
+                {
+                    <h4 style="margin-left: 40px">@item.Name</h4>
+                }
+        </div>
+        <div class="col">
+            <h2>Тип привода:</h2>
+                @foreach (var item in Model.DriveUnit.OrderBy(x => x.Name))
+                {
+                    <h4 style="margin-left: 40px">@item.Name</h4>
+                }
+        </div>
+    </div>
+    </div>

@@ -7,6 +7,8 @@ using CarMarketWithLogin.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CarMarketWithLogin.Models;
+using X.PagedList;
+
 
 namespace CarMarketWithLogin.Controllers
 {
@@ -21,9 +23,12 @@ namespace CarMarketWithLogin.Controllers
             _allCars = allCars;
         }
         
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            return View(_allCars.Cars.OrderBy(x => x.Brand));
+            const int pageSize = 3;
+            var pageNumber = page ?? 1;
+            return View(_allCars.Cars.OrderBy(x => x.Brand).ToPagedList(pageNumber, pageSize));
+            // return View(_allCars.Cars.OrderBy(x => x.Brand));
         }
 
         public IActionResult Privacy()

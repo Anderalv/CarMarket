@@ -16,8 +16,11 @@
         <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.15" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.15" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.15" />
+        <PackageReference Include="PagedList.Core.Mvc" Version="3.0.0" />
+        <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
         <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.4" />
         <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2" />
+        <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.3" />
     </ItemGroup>
     
 

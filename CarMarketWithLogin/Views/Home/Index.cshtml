@@ -1,13 +1,10 @@
-﻿@* @{ *@
-@*     ViewData["Title"] = "Home Page"; *@
-@* } *@
-@* *@
-@* <div class="text-center"> *@
-@*     <h1 class="display-4">Welcome</h1> *@
-@*     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
-@* </div> *@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
 
-@model IEnumerable<CarMarketWithLogin.Models.Car>
+@model IPagedList<CarMarketWithLogin.Models.Car>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
 
 <h1>Все автомобили:</h1>
 
@@ -50,3 +47,11 @@
         }
     }
 </div>
+
+<div style="text-align: center;">
+    
+      <div style="display: table; margin: 0 auto; text-align: center;">Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount </div>
+      <div style="display: table; margin: 0 auto; text-align: center;">@Html.PagedListPager(Model, page => Url.Action("Index",  new { page })) </div>
+    
+</div>
+
