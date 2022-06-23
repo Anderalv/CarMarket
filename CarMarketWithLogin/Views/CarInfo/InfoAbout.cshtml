@@ -1,5 +1,7 @@
 @using System.Globalization
+@using Microsoft.AspNetCore.Identity
 @model CarMarketWithLogin.Models.Car
+@inject SignInManager<User> SignInManager
 
 <h1>@Model.Brand @Model.Model</h1>
 <h1>Поколение @Model.Generation</h1>
@@ -75,14 +77,19 @@
 
 <form method="post">
 
-    <p>
-        <label>Оставьте Ваш комментарий:</label><br/>
-        <p><textarea rows="1" cols="20" placeholder="Срок владения" name="tenure"></textarea></p>
-        <textarea rows="4" cols="50" placeholder="Отзыв" name="inputComment"></textarea>
-
-    <p>
-        <input type="submit" value="Отправить"/>
-    </p>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <p>
+            <label>Оставьте Ваш комментарий:</label><br/>
+            <p><textarea rows="1" cols="20" placeholder="Срок владения" name="tenure"></textarea></p>
+            <textarea rows="4" cols="50" placeholder="Отзыв" name="inputComment"></textarea>
+        
+            <p>
+                <input type="submit" value="Отправить"/>
+            </p>
+        </p>
+    }
+    
 
     <p><h2>Комментарии:</h2></p>
     

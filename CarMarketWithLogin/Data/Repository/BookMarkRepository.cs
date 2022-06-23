@@ -14,8 +14,6 @@ namespace CarMarketWithLogin.Data.Repository
             this._appDbContent = appDbContent;
         }
         
-        public IEnumerable<BookMark> BookMarks => _appDbContent.BookMarks
-            .Include(x => x.Car)
-            .Include(x=>x.User);
+        public IEnumerable<BookMark> BookMarks => _appDbContent.BookMarks;
     }
 }

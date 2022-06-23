@@ -49,21 +49,25 @@ namespace CarMarketWithLogin
             services.AddTransient<IImgs, ImgRepository>();
             services.AddTransient<ITransmission, TransmissionRepository>();
 
-           services.AddIdentity<User, IdentityRole>(options =>
-               {
-                   options.SignIn.RequireConfirmedAccount = true;
-                   options.Password.RequireNonAlphanumeric = false;
-               })
-               .AddEntityFrameworkStores<ApplicationDbContext>();
-           
+           // services.AddIdentity<User, IdentityRole>(options =>
+           //     {
+           //         options.SignIn.RequireConfirmedAccount = true;
+           //         options.Password.RequireNonAlphanumeric = false;
+           //     })
+           //     .AddEntityFrameworkStores<ApplicationDbContext>();
+           //
             
            
-            // services.AddDefaultIdentity<User>(options =>
-            //     {
-            //         options.Password.RequireNonAlphanumeric = false;
-            //         options.SignIn.RequireConfirmedAccount = true;
-            //     })
-            //     .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<User>(options =>
+                {
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequiredUniqueChars = 0;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireUppercase = false;
+                    options.SignIn.RequireConfirmedAccount = true;
+                })
+                .AddEntityFrameworkStores<ApplicationDbContext>();
            
             
             services.AddControllersWithViews();

@@ -1,0 +1,22 @@
+@model bool 
+<!DOCTYPE html>
+
+<html>
+<head>
+    
+</head>
+<body>
+<div>
+    @if (Model == true)
+    {
+        <h2>Эта машина уже добавлена в закладки</h2>
+        <a href="javascript:history.back()" title="Вернуться на предыдущую страницу">назад</a>
+    }
+    else
+    {
+        <h2>Закладка добавлена</h2>
+        <a href="javascript:history.back()" title="Вернуться на предыдущую страницу"> назад </a>
+    }
+</div>
+</body>
+</html>

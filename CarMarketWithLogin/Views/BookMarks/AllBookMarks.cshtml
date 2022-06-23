@@ -1,0 +1,58 @@
+@using Microsoft.AspNetCore.Identity
+@model List<Car>
+@inject SignInManager<User> SignInManager
+
+<h1>Ваши закладки:</h1>
+
+@* <form> *@
+@*     <select name="java-navigator" onchange="top.location.href = *@
+@*   this.options[this.selectedIndex].value;"> *@
+@*         <option selected value="#">Все марки</option> *@
+@*         @foreach (var item in Model) *@
+@*         { *@
+@*             <option value="/Cars/ChosenMark/{@ViewBag.EngineType}/{@item.Car.Brand}">@item.Car.Brand (@ViewBag.EngineType)</option> *@
+@*         } *@
+@*     </select> *@
+@* </form> *@
+@* *@
+@* <form> *@
+@*     <select name="mark-navigator" onchange="top.location.href = this.options[this.selectedIndex].value;"> *@
+@*         <option selected value="/Cars/List/{@ViewBag.EngineType}">По умолчанию</option> *@
+@*         <option value="/Cars/SortPrice/{@ViewBag.EngineType}">по цене</option> *@
+@*         <option value="/Cars/SortYear/{@ViewBag.EngineType}">по году</option> *@
+@*     </select> *@
+@* </form> *@
+
+
+<div class="row mt-5 mb-2">
+    @{
+        if (SignInManager.IsSignedIn(User))
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-lg-4">
+                    <p>
+                    <div class="ramka">
+                        <a class="btn-block" href="/CarInfo/InfoAbout/{@item.Model}">
+
+                            <img src="@item.Imgs.OrderBy(x => x.Url).FirstOrDefault(x => x.CarId == item.Id).Url"
+                                 alt="@item.Brand" width="400" height="400"/>
+
+                        </a> </div>
+
+                    <h2>@item.Brand</h2>
+                    <p>@item.Model</p>
+                    <p>Рекомендованная цена: @item.RecommendPrice.ToString()$</p>
+                    <p><a class="btn-block" href="/CarInfo/InfoAbout/{@item.Model}">Подробнее</a> <a class="btn btn-warning" href="/BookMark/Delete/{@item.Id}">Удалить</a></p>
+                </div>
+            }
+        }
+        else
+        {
+            <h2>Необходимо зарегестрироваться</h2>
+            <a class="btn-block"  asp-area="Identity" asp-page="/Account/Register">Зарегестрироваться</a>
+            <a href="javascript:history.back()" title="Вернуться на предыдущую страницу"> назад </a>
+        }
+    }
+    
+</div>

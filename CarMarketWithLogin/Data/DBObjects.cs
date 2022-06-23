@@ -27,7 +27,7 @@ namespace CarMarketWithLogin.Data
                 Capacity capacity1_7= new Capacity {Name = 1.7};
                 Capacity capacity1_8= new Capacity {Name = 1.8};
                 Capacity capacity1_9= new Capacity {Name = 1.9};
-                Capacity capacity2_0 = new Capacity {Name = 2.0};
+                Capacity capacity2_0= new Capacity {Name = 2.0};
                 Capacity capacity2_1= new Capacity {Name = 2.1};
                 Capacity capacity2_2= new Capacity {Name = 2.2};
                 Capacity capacity2_3= new Capacity {Name = 2.3};

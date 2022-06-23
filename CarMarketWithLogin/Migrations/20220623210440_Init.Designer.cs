@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarMarketWithLogin.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220623150121_Init")]
+    [Migration("20220623210440_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -95,19 +95,17 @@ namespace CarMarketWithLogin.Migrations
 
             modelBuilder.Entity("CarMarketWithLogin.Models.BookMark", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("CarId")
+                    b.Property<int>("CarId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("varchar(255)");
 
-                    b.HasKey("id");
-
-                    b.HasIndex("CarId");
+                    b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
@@ -411,10 +409,12 @@ namespace CarMarketWithLogin.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("longtext");
@@ -451,10 +451,12 @@ namespace CarMarketWithLogin.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("longtext");
@@ -526,15 +528,9 @@ namespace CarMarketWithLogin.Migrations
 
             modelBuilder.Entity("CarMarketWithLogin.Models.BookMark", b =>
                 {
-                    b.HasOne("CarMarketWithLogin.Models.Car", "Car")
-                        .WithMany()
-                        .HasForeignKey("CarId");
-
                     b.HasOne("CarMarketWithLogin.Models.User", "User")
                         .WithMany("BookMarks")
                         .HasForeignKey("UserId");
-
-                    b.Navigation("Car");
 
                     b.Navigation("User");
                 });
