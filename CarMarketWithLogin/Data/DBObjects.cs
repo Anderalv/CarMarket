@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CarMarketWithLogin.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace CarMarketWithLogin.Data
 {
@@ -9,8 +12,8 @@ namespace CarMarketWithLogin.Data
         public static void Initial(ApplicationDbContext content)
         {
             
-            content.Database.EnsureDeleted();
-            content.Database.EnsureCreated();
+            // content.Database.EnsureDeleted();
+            // content.Database.EnsureCreated();
            
             if (!content.Transmissions.Any() && !content.Cars.Any())
             {
@@ -306,6 +309,40 @@ namespace CarMarketWithLogin.Data
                 content.SaveChanges();
 
             }
+
+            IdentityUser admin = new User
+            {
+                Id = 1.ToString(),
+                UserName = "admin",
+                NormalizedUserName = "admin",
+                Email = null,
+                NormalizedEmail = "admin",
+                EmailConfirmed = true,
+                PasswordHash = "admin",
+                SecurityStamp = "admin",
+                ConcurrencyStamp = null,
+                PhoneNumber = null,
+                PhoneNumberConfirmed = false,
+                TwoFactorEnabled = false,
+                LockoutEnd = null,
+                LockoutEnabled = false,
+                AccessFailedCount = 0,
+            };
+
+            // IdentityRole adminRole = new IdentityRole
+            // {
+            //     Name = "admin",
+            //     NormalizedName = "admin",
+            // };
+            // IdentityRole commonRole = new IdentityRole
+            // {
+            //     Name = "common",
+            //     NormalizedName = "common",
+            // };
+            
+            
+
+            content.SaveChanges();
         }
     }
 }

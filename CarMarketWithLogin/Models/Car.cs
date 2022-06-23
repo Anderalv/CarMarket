@@ -19,5 +19,6 @@ namespace CarMarketWithLogin.Models
         public List<DriveUnit> DriveUnit { get; set; } = new List<DriveUnit>();
         public List<EngineType> EngineType { get; set; } = new List<EngineType>();
         public List<Capacity> Capacities { get; set; } = new List<Capacity>();
+        public List<Comment> Comments { get; set; } = new List<Comment>();
     }
 }

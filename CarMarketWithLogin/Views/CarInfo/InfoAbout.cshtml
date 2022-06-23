@@ -1,7 +1,7 @@
 @using System.Globalization
 @model CarMarketWithLogin.Models.Car
 
-<h1>@Model.Brand @Model.Model</h1> 
+<h1>@Model.Brand @Model.Model</h1>
 <h1>Поколение @Model.Generation</h1>
 <h2>@Model.StartYear - @Model.EndYear</h2>
 <div class="row mt-5 mb-2">
@@ -12,47 +12,89 @@
                 <div class="ramka">
                     <img src="@img.Url" alt="@Model.Brand"/>
                 </div>
-            </div>    
+            </div>
         }
     }
 </div>
 
-<div class="container">
-    <div class="row align-items-start">
-        <div class="col">
-            <h2>Тип КПП:</h2>
-            @foreach (var item in Model.Transmissions.OrderBy(x => x.Name))
-            {
-                <h4 style="margin-left: 40px">@item.Name</h4>
-            }
+<style>
+   
+   .col1 {
+    width: 100px; /* Ширина ячейки */
+   }
+    th {
+       padding: 3px; /* Поля вокруг содержимого таблицы */
+       border: 1px solid black; /* Параметры рамки */
+       text-align: center;
+      }
+  </style>
+
+ <table border="1">
+    <tbody>
+  <tr>
+      <th>Тип КПП:</th>
+      @foreach (var item in Model.Transmissions.OrderBy(x => x.Name))
+      {
+          <td class="col1"> @item.Name  </td>
+      }
+  </tr>
+    
+  <tr>
+      <th>Тип Двигателя:</th>
+      @foreach (var item in Model.EngineType.OrderBy(x => x.Name))
+      {
+          <td> @item.Name </td>
+      }
+  </tr>
+  
+  <tr>
+      <th>Объем двигателя:</th>
+      @foreach (var item in Model.Capacities.OrderBy(x => x.Name))
+      {
+          <td>@item.Name.ToString(CultureInfo.InvariantCulture)</td>
+      }
+  </tr>
+  
+    <tr>
+      <th>Тип кузова:</th>
+      @foreach (var item in Model.BodyType.OrderBy(x => x.Name))
+      {
+          <td>@item.Name</td>
+      }
+    </tr>
+    <tr>
+     <th>Тип привода:</th>
+     @foreach (var item in Model.DriveUnit.OrderBy(x => x.Name))
+     {
+         <td>@item.Name</td>
+     }
+    </tr>
+  </tbody>
+</table>
+
+
+<form method="post">
+
+    <p>
+        <label>Оставьте Ваш комментарий:</label><br/>
+        <p><textarea rows="1" cols="20" placeholder="Срок владения" name="tenure"></textarea></p>
+        <textarea rows="4" cols="50" placeholder="Отзыв" name="inputComment"></textarea>
+
+    <p>
+        <input type="submit" value="Отправить"/>
+    </p>
+
+    <p><h2>Комментарии:</h2></p>
+    
+    @foreach (var item in Model.Comments)
+    {
+        <div class="py-2 border-bottom border-top">
+            
+            <h5>@item.Data</h5> 
+            <h5>Cрок владения: @item.Tenure</h5>
+            <table>
+                <tr><td>@item.Content</td></tr> 
+            </table>
         </div>
-        <div class="col">
-            <h2>Тип Двигателя:</h2>
-            @foreach (var item in Model.EngineType.OrderBy(x => x.Name))
-            {
-                <h4 style="margin-left: 40px">@item.Name</h4>
-            }
-        </div>
-        <div class="col">
-            <h2>Объем двигателя:</h2>
-            @foreach (var item in Model.Capacities.OrderBy(x => x.Name))
-            {
-                <h4 style="margin-left: 40px">@item.Name.ToString(CultureInfo.InvariantCulture)</h4>
-            }
-        </div>
-        <div class="col">
-            <h2>Тип кузова:</h2>
-                @foreach (var item in Model.BodyType.OrderBy(x => x.Name))
-                {
-                    <h4 style="margin-left: 40px">@item.Name</h4>
-                }
-        </div>
-        <div class="col">
-            <h2>Тип привода:</h2>
-                @foreach (var item in Model.DriveUnit.OrderBy(x => x.Name))
-                {
-                    <h4 style="margin-left: 40px">@item.Name</h4>
-                }
-        </div>
-    </div>
-    </div>
+    }
+</form>

@@ -22,6 +22,7 @@ namespace CarMarketWithLogin.Data.Repository
             .Include(x => x.EngineType)
             .Include(x => x.Capacities)
             .Include(x => x.Imgs)
+            .Include(x => x.Comments)
             .ToList();
         public Car GetCar(int carId) => Cars.FirstOrDefault(x => x.Id == carId);
     }

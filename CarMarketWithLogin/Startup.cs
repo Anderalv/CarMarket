@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CarMarketWithLogin.Data;
 using CarMarketWithLogin.Data.Repository;
 using CarMarketWithLogin.Interfaces;
+using CarMarketWithLogin.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
@@ -47,20 +48,24 @@ namespace CarMarketWithLogin
             services.AddTransient<IEngineType, EngineTypeRepository>();
             services.AddTransient<IImgs, ImgRepository>();
             services.AddTransient<ITransmission, TransmissionRepository>();
-            
-            var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
-            
-            services.AddDbContext<ApplicationDbContext>(
-                dbContextOptions => dbContextOptions
-                    .UseMySql(connectionString, serverVersion)
-                    .LogTo(Console.WriteLine, LogLevel.Information)
-                    .EnableSensitiveDataLogging()
-                    .EnableDetailedErrors()
-            );
-            
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+           services.AddIdentity<User, IdentityRole>(options =>
+               {
+                   options.SignIn.RequireConfirmedAccount = true;
+                   options.Password.RequireNonAlphanumeric = false;
+               })
+               .AddEntityFrameworkStores<ApplicationDbContext>();
+           
+            
+           
+            // services.AddDefaultIdentity<User>(options =>
+            //     {
+            //         options.Password.RequireNonAlphanumeric = false;
+            //         options.SignIn.RequireConfirmedAccount = true;
+            //     })
+            //     .AddEntityFrameworkStores<ApplicationDbContext>();
+           
+            
             services.AddControllersWithViews();
         }
 
@@ -79,6 +84,9 @@ namespace CarMarketWithLogin
                 app.UseHsts();
             }
 
+            app.UseAuthentication();    // подключение аутентификации
+            app.UseAuthorization();
+            
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
 

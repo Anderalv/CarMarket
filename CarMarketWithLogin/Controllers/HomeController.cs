@@ -7,6 +7,7 @@ using CarMarketWithLogin.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CarMarketWithLogin.Models;
+using Microsoft.AspNetCore.Identity;
 using X.PagedList;
 
 
@@ -16,11 +17,15 @@ namespace CarMarketWithLogin.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IAllCars _allCars;
+        // private readonly UserManager<IdentityUser> _userManager;
+        // RoleManager<IdentityRole> _roleManager;
 
-        public HomeController(ILogger<HomeController> logger, IAllCars allCars)
+        public HomeController(ILogger<HomeController> logger, IAllCars allCars /*UserManager<IdentityUser> userManager,RoleManager<IdentityRole> roleManager*/)
         {
             _logger = logger;
             _allCars = allCars;
+            // _userManager = userManager;
+            // _roleManager = roleManager;
         }
         
         public IActionResult Index(int? page)
@@ -28,7 +33,6 @@ namespace CarMarketWithLogin.Controllers
             const int pageSize = 3;
             var pageNumber = page ?? 1;
             return View(_allCars.Cars.OrderBy(x => x.Brand).ToPagedList(pageNumber, pageSize));
-            // return View(_allCars.Cars.OrderBy(x => x.Brand));
         }
 
         public IActionResult Privacy()
@@ -51,7 +55,9 @@ namespace CarMarketWithLogin.Controllers
         [Route("/Home/SortYear")]
         public ViewResult SortYear()
         {
+            
             return View(_allCars.Cars.OrderBy(x => x.StartYear));
+            
         }
     }
 }

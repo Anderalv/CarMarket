@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using CarMarketWithLogin.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarMarketWithLogin.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -34,5 +35,8 @@ namespace CarMarketWithLogin.Data
         public DbSet<EngineType> EngineTypes { get; set; }
         public DbSet<Transmission> Transmissions { get; set; }
         public DbSet<Img> Imgs{ get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<BookMark> BookMarks { get; set; }
     }
 }

@@ -1,5 +1,8 @@
 using System.Linq;
+using System.Threading.Tasks;
 using CarMarketWithLogin.Interfaces;
+using CarMarketWithLogin.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarMarketWithLogin.Controllers
@@ -8,16 +11,19 @@ namespace CarMarketWithLogin.Controllers
     {
         private readonly IEngineType _engineType;
         private readonly IAllCars _allCars;
-        public CarsController(IEngineType iEngineType, IAllCars iAllCars)
+        private readonly UserManager<User> _userManager;
+        public CarsController(IEngineType iEngineType, IAllCars iAllCars, UserManager<User> userManager)
         {
             _engineType = iEngineType;
             _allCars = iAllCars;
+            _userManager = userManager;
         }
 
         [Route("/Cars/List")]
         [Route("/Cars/List/{engineType}")]
-        public ViewResult List(string engineType)
+        public async Task<ViewResult> List(string engineType)
         {
+            var test = await _userManager.GetUserAsync(Request.HttpContext.User);
             engineType = engineType.Replace("{", "").Replace("}", "");
             ViewBag.EngineType = engineType;
             return View(_engineType.EngineTypes.FirstOrDefault(x => x.GroupName.Equals(engineType))?.Cars.OrderBy(x => x.Brand).ToList());
