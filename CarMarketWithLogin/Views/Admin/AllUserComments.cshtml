@@ -1,0 +1,24 @@
+@using Microsoft.AspNetCore.Identity
+@model List<User>
+@inject SignInManager<User> _signInManager
+
+<p><h1>Комментарии Пользоваелей:</h1></p>
+
+@foreach (var item in Model)
+ {
+     <h3>Имя пользователя: @item.Email</h3>
+
+     foreach (var itemComment in item.Comments)
+     {
+         <td>@itemComment.Car.Brand</td> @itemComment.Car.Model
+         <div class="py-2 border-bottom border-top">
+             <h5>@itemComment.Data</h5>
+             <h5>Cрок владения: @itemComment.Tenure</h5>
+             <table>
+                 <tr><td>@itemComment.Content</td></tr>
+             </table>
+         </div>
+         <p><a class="btn btn-warning" href="/Admin/DeleteComment/{@itemComment.Id}">Удалить</a></p>
+     }
+}
+

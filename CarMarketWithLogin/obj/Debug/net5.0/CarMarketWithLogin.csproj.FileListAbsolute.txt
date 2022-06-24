@@ -103,3 +103,5 @@
 /Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/bin/Debug/net5.0/X.PagedList.Mvc.Core.dll
 /Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/BookMarks/AddBookMark.cshtml.g.cs
 /Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/BookMarks/AllBookMarks.cshtml.g.cs
+/Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/Admin/AllUserComments.cshtml.g.cs
+/Users/andreylastovski/Desktop/reProject/CarMarketWithLogin/CarMarketWithLogin/obj/Debug/net5.0/Razor/Views/Admin/AllUsers.cshtml.g.cs

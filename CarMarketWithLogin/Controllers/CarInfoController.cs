@@ -40,23 +40,26 @@ namespace CarMarketWithLogin.Controllers
         public IActionResult InfoAbout(string inputComment,string tenure, string model)
         {
             
-            var user = HttpContext.User;
-            var name = user.Identity.Name;
+            var user = HttpContext.User;  
+            var name = user.Identity.Name; 
             var currentUser = _userManager.Users.FirstOrDefault(x => x.Email.Equals(name));
             model = model.Replace("{", "").Replace("}", "");
             var car = _allCars.Cars.FirstOrDefault(x =>
-                    x.Model.Equals(model, StringComparison.CurrentCultureIgnoreCase));
+                    x.Model.Equals(model, StringComparison.CurrentCultureIgnoreCase)); 
 
-            var newComment = new Comment();
+            var newComment = new Comment(); 
             newComment.Tenure = tenure;
             newComment.Data = DateTime.Now.ToString(CultureInfo.InvariantCulture);
             newComment.Content = inputComment;
+            
             newComment.Car = car;
             newComment.User = currentUser;
             
-            car?.Comments.Add(newComment);
             _content.Comments.Add(newComment);
             _content.Users.First(x => x.Id.Equals(currentUser.Id)).Comments.Add(newComment);
+
+            var test = _content.Users.First(x => x.Id.Equals(currentUser.Id)).Comments.First().Car.Brand;
+            
             _content.SaveChanges();
 
             return View(car);

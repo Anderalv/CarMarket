@@ -48,6 +48,8 @@ namespace CarMarketWithLogin
             services.AddTransient<IEngineType, EngineTypeRepository>();
             services.AddTransient<IImgs, ImgRepository>();
             services.AddTransient<ITransmission, TransmissionRepository>();
+            services.AddTransient<IUsers, UserRepository>();
+            services.AddTransient<IComments, CommentRepository>();
 
            // services.AddIdentity<User, IdentityRole>(options =>
            //     {

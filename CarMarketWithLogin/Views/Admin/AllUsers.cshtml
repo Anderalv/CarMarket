@@ -1,0 +1,16 @@
+@using Microsoft.AspNetCore.Identity
+@model List<User>
+@inject SignInManager<User> SignInManager
+
+<p><h1>Все пользоваели:</h1></p>
+    
+@foreach (var item in Model)
+ { 
+     <div class="py-2 border-bottom border-top">
+         <h3>Имя пользователя: @item.Email</h3>
+         <h4>Количество комментариев: @item.Comments.Count</h4>
+         <p><a class="btn btn-warning" href="/Admin/DeleteUser/{@item.Id}">Удалить</a></p> 
+         <p><a class="btn btn-warning" href="/Admin/DeleteUserWithComments/{@item.Id}">Удалить с комментариями</a></p>
+     </div>       
+ }
+

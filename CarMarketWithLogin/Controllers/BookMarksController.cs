@@ -7,15 +7,14 @@ using CarMarketWithLogin.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace CarMarketWithLogin.Controllers
 {
     public class BookMarksController : Controller
     {
-        private ApplicationDbContext _applicationDbContext;
-        private UserManager<User> _userManager;
-        private IAllCars _allCars;
+        private readonly ApplicationDbContext _applicationDbContext;
+        private readonly UserManager<User> _userManager;
+        private readonly IAllCars _allCars;
         public BookMarksController(UserManager<User> userManager, ApplicationDbContext applicationDbContext, IAllCars allCars)
         {
             _userManager = userManager;
@@ -30,7 +29,7 @@ namespace CarMarketWithLogin.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 carId = carId.Replace("{", "").Replace("}", "");
-                int id = Int32.Parse(carId);
+                var id = Int32.Parse(carId);
                 var user = HttpContext.User;
                 var name = user.Identity.Name;
                 var currentUser =  _userManager.Users.FirstOrDefault(x => x.Email.Equals(name));
@@ -78,7 +77,6 @@ namespace CarMarketWithLogin.Controllers
             }
             return View();
         }
-
         
         [Route("/BookMark/Delete/{CarId}")]
         public RedirectToActionResult DeleteBookMark(string carId)
@@ -98,7 +96,6 @@ namespace CarMarketWithLogin.Controllers
                 _applicationDbContext.BookMarks.Remove(bookMark);
                 _applicationDbContext.SaveChanges();
             }
-
             return RedirectToAction("AllBookMarks", "BookMarks");
         }
         

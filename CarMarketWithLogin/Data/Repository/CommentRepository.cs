@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using CarMarketWithLogin.Interfaces;
 using CarMarketWithLogin.Models;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace CarMarketWithLogin.Data.Repository
             .Include(x => x.Content)
             .Include(x => x.User)
             .Include(x => x.Data)
-            .Include(x => x.Tenure);
+            .Include(x => x.Tenure)
+            .ToList();
     }
 }
